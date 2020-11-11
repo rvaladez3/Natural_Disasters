@@ -506,3 +506,82 @@ WHERE e_earthquakeIdNum >= 21557
 -- INSERT INTO Earthquakes SELECT * FROM sqlitestudio_temp_table WHERE sqlitestudio_temp_table.e_earthquakeIdNum >= 21557;
 
 -- DROP TABLE sqlitestudio_temp_table;
+CREATE TABLE sqlitestudio_temp_table AS SELECT *
+                                          FROM Hurricanes;
+
+DROP TABLE Hurricanes;
+
+CREATE TABLE Hurricanes (
+    H_key             INTEGER (4, 0),
+    H_Id              VARCHAR (9, 0),
+    H_Name            VARCHAR (10, 0),
+    H_dates           DATE,
+    H_time            INTEGER (4, 0),
+    H_event           VARCHAR (1, 0),
+    H_status          VARCHAR (2, 0),
+    H_latitude        VARCHAR (5, 0),
+    H_longitude       VARCHAR (6, 0),
+    H_maximumWind     INTEGER (3, 0),
+    H_minimumPressure INTEGER (4, 0),
+    H_LowWindNE       INTEGER (3, 0),
+    H_LowWindSE       INTEGER (3, 0),
+    H_LowWindSW       INTEGER (3, 0),
+    H_ModerateWindNE  INTEGER (3, 0),
+    H_ModerateWindSE  INTEGER (3, 0),
+    H_ModerateWindSW  INTEGER (3, 0),
+    H_ModerateWindNW  INTEGER (3, 0),
+    H_HighWindNE      INTEGER (3, 0),
+    H_HighWindSE      INTEGER (3, 0),
+    H_HighWindSW      INTEGER (3, 0),
+    H_HighWindNW      INTEGER (3, 0) 
+);
+
+INSERT INTO Hurricanes (
+                           H_key,
+                           H_Id,
+                           H_Name,
+                           H_dates,
+                           H_time,
+                           H_event,
+                           H_status,
+                           H_latitude,
+                           H_longitude,
+                           H_maximumWind,
+                           H_minimumPressure,
+                           H_LowWindNE,
+                           H_LowWindSE,
+                           H_LowWindSW,
+                           H_ModerateWindNE,
+                           H_ModerateWindSE,
+                           H_ModerateWindSW,
+                           H_ModerateWindNW,
+                           H_HighWindNE,
+                           H_HighWindSE,
+                           H_HighWindSW,
+                           H_HighWindNW
+                       )
+                       SELECT H_key,
+                              H_Id,
+                              H_Name,
+                              H_dates,
+                              H_time,
+                              H_event,
+                              H_status,
+                              H_latitude,
+                              H_longitude,
+                              H_maximumWing,
+                              H_minimumPressure,
+                              H_LowWindNE,
+                              H_LowWingSE,
+                              H_LowWindSW,
+                              H_ModerateWindNE,
+                              H_ModerateWindSE,
+                              H_ModerateWindSW,
+                              H_ModerateWindNW,
+                              H_HighWindNE,
+                              H_HighWindSE,
+                              H_HighWindSW,
+                              H_HighWindNW
+                         FROM sqlitestudio_temp_table;
+
+DROP TABLE sqlitestudio_temp_table;
