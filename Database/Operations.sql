@@ -88,7 +88,7 @@
 
 -- );
 
--- .mode 'column'
+-- .mode 'csv'
 -- .serperator "\t"
 -- .import './Fires/California_Fire_Incidents.csv' Fires
 -- .import './Earthquakes/database.csv' Earthquakes
@@ -269,5 +269,240 @@
 --                          f_started,
 --                          f_status
 --                     FROM sqlitestudio_temp_table;
+
+-- DROP TABLE sqlitestudio_temp_table;
+
+-- CREATE TABLE sqlitestudio_temp_table AS SELECT *
+--                                           FROM Fires;
+
+-- DROP TABLE Fires;
+
+-- CREATE TABLE Fires (
+--     f_fireIdNum       INTEGER          NOT NULL
+--                                        PRIMARY KEY AUTOINCREMENT,
+--     f_acresBurned     DECIMAL (7, 0)   NOT NULL,
+--     f_active          STRING           NOT NULL,
+--     f_adminUnit       VARCHAR (20)     NOT NULL,
+--     f_archiveYear     DECIMAL (4, 0)   NOT NULL,
+--     f_calfireIncident VARCHAR (5, 0)   NOT NULL,
+--     f_counties        VARCHAR (15)     NOT NULL,
+--     f_countyIds       DECIMAL (4, 0)   NOT NULL,
+--     f_crewsInvolved   DECIMAL (4, 0)   NOT NULL,
+--     f_extinguished    DATE             NOT NULL,
+--     f_fatalities      DECIMAL (3, 0)   NOT NULL,
+--     f_injuries        DECIMAL (8, 3)   NOT NULL,
+--     f_latitude        DECIMAL (20, 10) NOT NULL,
+--     f_location        VARCHAR (50)     NOT NULL,
+--     f_longitude       DECIMAL (20, 10) NOT NULL,
+--     f_majorIncident   VARCHAR (30)     NOT NULL,
+--     f_started         DATE             NOT NULL,
+--     f_status          VARCHAR (15)     NOT NULL
+-- );
+
+-- INSERT INTO Fires (
+--                       f_fireIdNum,
+--                       f_acresBurned,
+--                       f_active,
+--                       f_adminUnit,
+--                       f_archiveYear,
+--                       f_calfireIncident,
+--                       f_counties,
+--                       f_countyIds,
+--                       f_crewsInvolved,
+--                       f_extinguished,
+--                       f_fatalities,
+--                       f_injuries,
+--                       f_latitude,
+--                       f_location,
+--                       f_longitude,
+--                       f_majorIncident,
+--                       f_started,
+--                       f_status
+--                   )
+--                   SELECT f_fireIdNum,
+--                          f_acresBurned,
+--                          f_active,
+--                          f_adminUnit,
+--                          f_archiveYear,
+--                          f_calfireIncident,
+--                          f_counties,
+--                          f_countyIds,
+--                          f_crewsInvolved,
+--                          f_extinguished,
+--                          f_fatalities,
+--                          f_latitude,
+--                          f_latitude2,
+--                          f_longitude,
+--                          f_majorIncident,
+--                          f_name,
+--                          f_started,
+--                          f_status
+--                     FROM sqlitestudio_temp_table;
+
+-- DROP TABLE sqlitestudio_temp_table;
+
+-- CREATE TABLE sqlitestudio_temp_table AS SELECT *
+--                                           FROM Fires;
+
+-- DROP TABLE Fires;
+
+-- CREATE TABLE Fires (
+--     f_fireIdNum       INTEGER          NOT NULL
+--                                        PRIMARY KEY AUTOINCREMENT,
+--     f_acresBurned     DECIMAL (7, 0)   NOT NULL,
+--     f_active          STRING           NOT NULL,
+--     f_adminUnit       VARCHAR (20)     NOT NULL,
+--     f_archiveYear     DECIMAL (4, 0)   NOT NULL,
+--     f_calfireIncident VARCHAR (5, 0)   NOT NULL,
+--     f_counties        VARCHAR (15)     NOT NULL,
+--     f_countyIds       DECIMAL (4, 0)   NOT NULL,
+--     f_crewsInvolved   DECIMAL (4, 0)   NOT NULL,
+--     f_extinguished    DATE             NOT NULL,
+--     f_fatalities      DECIMAL (3, 0)   NOT NULL,
+--     f_injuries        DECIMAL (8, 3)   NOT NULL,
+--     f_latitude        DECIMAL (20, 10) NOT NULL,
+--     f_location        VARCHAR (50)     NOT NULL,
+--     f_longitude       DECIMAL (20, 10) NOT NULL,
+--     f_majorIncident   VARCHAR (30)     NOT NULL,
+--     f_started         VARCHAR (20)     NOT NULL
+-- );
+
+-- INSERT INTO Fires (
+--                       f_fireIdNum,
+--                       f_acresBurned,
+--                       f_active,
+--                       f_adminUnit,
+--                       f_archiveYear,
+--                       f_calfireIncident,
+--                       f_counties,
+--                       f_countyIds,
+--                       f_crewsInvolved,
+--                       f_extinguished,
+--                       f_fatalities,
+--                       f_injuries,
+--                       f_latitude,
+--                       f_location,
+--                       f_longitude,
+--                       f_majorIncident,
+--                       f_started
+--                   )
+--                   SELECT f_fireIdNum,
+--                          f_acresBurned,
+--                          f_active,
+--                          f_adminUnit,
+--                          f_archiveYear,
+--                          f_calfireIncident,
+--                          f_counties,
+--                          f_countyIds,
+--                          f_crewsInvolved,
+--                          f_extinguished,
+--                          f_fatalities,
+--                          f_injuries,
+--                          f_latitude,
+--                          f_location,
+--                          f_longitude,
+--                          f_majorIncident,
+--                          f_started
+--                     FROM sqlitestudio_temp_table
+--                     WHERE f_archiveYear > 2012 AND f_archiveYear < 2019;
+
+-- DROP TABLE sqlitestudio_temp_table;
+
+
+
+
+
+
+-- INSERT INTO Fires (
+--                       f_fireIdNum,
+--                       f_acresBurned,
+--                       f_active,
+--                       f_adminUnit,
+--                       f_archiveYear,
+--                       f_calfireIncident,
+--                       f_counties,
+--                       f_countyIds,
+--                       f_crewsInvolved,
+--                       f_extinguished,
+--                       f_fatalities,
+--                       f_injuries,
+--                       f_latitude,
+--                       f_location,
+--                       f_longitude,
+--                       f_majorIncident,
+--                       f_started
+--                    )
+--                    SELECT f_fireIdNum,
+--                          f_acresBurned,
+--                          f_active,
+--                          f_adminUnit,
+--                          f_archiveYear,
+--                          f_calfireIncident,
+--                          f_counties,
+--                          f_countyIds,
+--                          f_crewsInvolved,
+--                          f_extinguished,
+--                          f_fatalities,
+--                          f_injuries,
+--                          f_latitude,
+--                          f_location,
+--                          f_longitude,
+--                          f_majorIncident,
+--                          f_started
+--                          FROM sqlitestudio_temp_table
+--                          WHERE sqlitestudio_temp_table.f_archiveYear > 2012 AND sqlitestudio_temp_table.f_archiveYear < 2019
+
+-- DROP TABLE sqlitestudio_temp_table
+
+SELECT *
+FROM Earthquakes
+WHERE e_earthquakeIdNum >= 21557 
+
+-- CREATE TABLE sqlitestudio_temp_table AS SELECT *
+--                                           FROM WorldDisaster;
+-- DROP table WorldDisaster;
+
+-- CREATE TABLE WorldDisaster (
+--     wd_FemaDeclaration   VARCHAR (15)   NOT NULL,
+--     wd_disasterNumber    VARCHAR (15)   NOT NULL,
+--     wd_state             VARCHAR (4)    NOT NULL,
+--     wd_declarationType   VARCHAR (4)    NOT NULL,
+--     wd_declarationDate   DATE           NOT NULL,
+--     wd_fyDeclared        DECIMAL (4)    NOT NULL,
+--     wd_incidentType      VARCHAR (20)   NOT NULL,
+--     wd_declarationTitle  VARCHAR (30)   NOT NULL,
+--     wd_incidentbeginDate DATE           NOT NULL,
+--     wd_incidentEndDate   DATE           NOT NULL,
+--     wd_placeCode         DECIMAL (8, 2) NOT NULL,
+--     wd_designatedArea    VARCHAR (30)   NOT NULL
+-- );
+
+--INSERT INTO WorldDisaster SELECT * FROM sqlitestudio_temp_table WHERE sqlitestudio_temp_table.wd_incidentbeginDate > "2013%" AND sqlitestudio_temp_table.wd_incidentbeginDate < "2018%";
+
+-- DROP TABLE sqlitestudio_temp_table;
+
+-- CREATE TABLE sqlitestudio_temp_table AS SELECT * 
+--                                         FROM Earthquakes
+
+-- DROP TABLE Earthquakes
+
+-- CREATE TABLE Earthquakes (
+--     e_earthquakeIdNum         INTEGER        PRIMARY KEY AUTOINCREMENT
+--                                              NOT NULL,
+--     e_date                    DATE           NOT NULL,
+--     e_time                    DATETIME       NOT NULL,
+--     e_latitude                DECIMAL (5, 2) NOT NULL,
+--     e_longitude               DECIMAL (4, 0) NOT NULL,
+--     e_type                    VARCHAR (10)   NOT NULL,
+--     e_depth                   DECIMAL (4, 0) NOT NULL,
+--     e_Magnitude               DECIMAL (4, 2) NOT NULL,
+--     e_MagnitudeType           VARCHAR (5)    NOT NULL,
+--     e_source                  VARCHAR (6)    NOT NULL,
+--     e_locationSource          VARCHAR (6)    NOT NULL,
+--     e_magnitudeSource         VARCHAR (5)    NOT NULL,
+--     e_status                  VARCHAR (8)    NOT NULL
+-- );
+
+-- INSERT INTO Earthquakes SELECT * FROM sqlitestudio_temp_table WHERE sqlitestudio_temp_table.e_earthquakeIdNum >= 21557;
 
 -- DROP TABLE sqlitestudio_temp_table;
