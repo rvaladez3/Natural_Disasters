@@ -16,7 +16,7 @@ CREATE TABLE Fires
     f_engines DECIMAL(4,0) NOT NULL,
     f_extinguished DATE not NULL,
     f_fatalities DECIMAL(3,0) not NULL,
-    f_featured boolean NOT NULL,
+    f_featured boolean NOT NULL,+
     f_final Boolean not NULL,
     f_helicopters VARCHAR(6,0) not NULL,
     f_injuries DECIMAL(3, 0) NOT NULL,
@@ -85,7 +85,6 @@ CREATE TABLE WorldDisaster
     wd_designatedArea VARCHAR(30) not null,
     wd_declarationRequestNumber DECIMAL(8,2) not null,
     wd_uniqueId INTEGER not NULL
-
 );
 
 CREATE TABLE PHurricanes(
@@ -113,13 +112,184 @@ CREATE TABLE PHurricanes(
     PH_highWindNE Decimal(4,0),
 );
 
-CREATE TABLE Souces(
+CREATE TABLE Hurricanes (
+    H_key             INTEGER (4, 0),
+    H_Id              VARCHAR (9, 0),
+    H_Name            VARCHAR (10, 0),
+    H_dates           DATE,
+    H_time            INTEGER (4, 0),
+    H_event           VARCHAR (1, 0),
+    H_status          VARCHAR (2, 0),
+    H_latitude        VARCHAR (5, 0),
+    H_longitude       VARCHAR (6, 0),
+    H_maximumWing     INTEGER (3, 0),
+    H_minimumPressure INTEGER (4, 0),
+    H_LowWindNE       INTEGER (3, 0),
+    H_LowWingSE       INTEGER (3, 0),
+    H_LowWindSW       INTEGER (3, 0),
+    H_ModerateWindNE  INTEGER (3, 0),
+    H_ModerateWindSE  INTEGER (3, 0),
+    H_ModerateWindSW  INTEGER (3, 0),
+    H_ModerateWindNW  INTEGER (3, 0),
+    H_HighWindNE      INTEGER (3, 0),
+    H_HighWindSE      INTEGER (3, 0),
+    H_HighWindSW      INTEGER (3, 0),
+    H_HighWindNW      INTEGER (3, 0) 
+);
 
-)
+DELETE FROM Hurricanes
+WHERE H_key = "key";
+
+CREATE TABLE sqlitestudio_temp_table AS SELECT *
+                                          FROM Sources;
+
+DROP TABLE Sources;
+
+CREATE TABLE Sources (
+    S_ID                         INTEGER (4, 0),
+    S_year                       INTEGER (4, 0),
+    S_Month                      INTEGER (2, 0),
+    S_Day                        INTEGER (2, 0),
+    S_Hour                       INTEGER (2, 0),
+    S_minute                     INTEGER (2, 0),
+    S_cause                      INTEGER (2, 0),
+    S_validity                   INTEGER (1, 0),
+    S_Focal_Depth                INTEGER (3, 0),
+    S_Primary_Magnitude          DECIMAL (1, 1),
+    S_Region_Code                INTEGER (2, 0),
+    S_Country                    VARCHAR (40, 0),
+    S_State_Province             CHAR (2, 0),
+    S_location                   VARCHAR (35),
+    S_latitude                   DECIMAL (3, 3),
+    S_longitude                  DECIMAL (3, 3),
+    S_Maximum_Height             DECIMAL (3, 3),
+    S_Magnitude_IIDA             DECIMAL (1, 1),
+    S_Itensity_Soloviev          DECIMAL (1, 1),
+    S_Warning_Status             INTEGER (1, 0),
+    S_missing                    INTEGER (6, 0),
+    S_missing_estimate           INTEGER (1, 0),
+    S_Injuries                   INTEGER (3, 0),
+    S_injury_estimate            INTEGER (1, 0),
+    S_Fatalities                 INTEGER (6, 0),
+    S_Fatality_estimate          INTEGER (1, 0),
+    S_Damage_Millions_dollars    DECIMAL (6, 3),
+    S_Damage_Estimate            INTEGER (1, 0),
+    S_Houses_Damaged             INTEGER (6, 0),
+    S_House_Damage_Estimate      INTEGER (1, 0),
+    S_House_Destroyed            INTEGER (6, 0),
+    S_House_Destruction_estimate INTEGER (4, 0),
+    S_All_missing                INTEGER (1, 0),
+    S_missing_total              INTEGER (5, 0),
+    S_all_injuries               INTEGER (6, 0),
+    S_injury_total               INTEGER (1, 0),
+    S_all_fatalities             INTEGER (6, 0),
+    S_fatality_total             INTEGER (1, 0),
+    S_all_damage_millions        DECIMAL (6, 3),
+    S_damage_total               INTEGER (1, 0),
+    
+    S_all_house_damaged          INTEGER (6, 0),
+    S_house_damage_total         INTEGER (1, 0),
+    S_all_house_destroyed        INTEGER (7, 0),
+    S_house_destruction_total    INTEGER (1, 0) 
+);
+
+INSERT INTO Sources (
+                        S_ID,
+                        S_year,
+                        S_Month,
+                        S_Day,
+                        S_Hour,
+                        S_minute,
+                        S_cause,
+                        S_validity,
+                        S_Focal_Depth,
+                        S_Primary_Magnitude,
+                        S_Region_Code,
+                        S_Country,
+                        S_State_Province,
+                        S_location,
+                        S_latitude,
+                        S_longitude,
+                        S_Maximum_Height,
+                        S_Magnitude_IIDA,
+                        S_Itensity_Soloviev,
+                        S_Warning_Status,
+                        S_missing,
+                        S_missing_estimate,
+                        S_Injuries,
+                        S_injury_estimate,
+                        S_Fatalities,
+                        S_Fatality_estimate,
+                        S_Damage_Millions_dollars,
+                        S_Damage_Estimate,
+                        S_Houses_Damaged,
+                        S_House_Damage_Estimate,
+                        S_House_Destroyed,
+                        S_House_Destruction_estimate,
+                        S_All_missing,
+                        S_missing_total,
+                        S_all_injuries,
+                        S_injury_total,
+                        S_all_fatalities,
+                        S_fatality_total,
+                        S_all_damage_millions,
+                        S_damage_total,
+                        S_all_house_damaged,
+                        S_house_damage_total,
+                        S_all_house_destroyed,
+                        S_house_destruction_total
+                    )
+                    SELECT S_id,
+                           S_year,
+                           S_Month,
+                           S_Day,
+                           S_Hour,
+                           S_minute,
+                           S_cause,
+                           S_validity,
+                           S_Focal_Depth,
+                           S_Primary_Magnitude,
+                           S_Region_Code,
+                           S_Country,
+                           S_State_Province,
+                           S_location,
+                           S_latitude,
+                           S_longitude,
+                           S_Maximum_Height,
+                           S_Magnitude_IIDA,
+                           S_Itensity_Soloviev,
+                           S_Warning_Status,
+                           S_missing,
+                           S_missing_estimate,
+                           S_Injuries,
+                           S_injury_estimate,
+                           S_Fatalities,
+                           S_Fatality_estimate,
+                           S_Damage_Millions_dollars,
+                           S_Damage_Estimate,
+                           S_Houses_Damaged,
+                           S_House_Damage_Estimate,
+                           S_House_Destroyed,
+                           S_House_Destruction_estimate,
+                           S_All_missing,
+                           S_missing_total,
+                           S_all_injuries,
+                           S_injury_total,
+                           S_all_fatalities,
+                           S_fatality_total,
+                           S_all_damage_millions,
+                           S_damage_total,
+                           S_all_house_damaged,
+                           S_house_damage_total,
+                           S_all_house_destroyed,
+                           S_house_destruction_total
+                      FROM sqlitestudio_temp_table;
+
+DROP TABLE sqlitestudio_temp_table;
 
 CREATE TABLE Waves(
     W_sourceId INT(4),
-    W_sourceId INT(6),
+    W_waveId INT(6),
     W_year INT(4),
     W_month INT(2),
     W_day INT(2),
@@ -140,7 +310,7 @@ CREATE TABLE Waves(
     W_injury_estimate INT(1,0),
     W_fatalities INT(6,0),
     W_fatality_estimate INT(1,0),
-    W_damage_millio_dollars DECIMAL(6,3),
+    W_damage_million_dollars DECIMAL(6,3),
     W_damage_estimate INT(1,0),
     W_houses_damaged INT(5,0),
     W_houses_damaged_estimate INT(2,0),
@@ -155,6 +325,7 @@ CREATE TABLE Waves(
 .import './Disasters/us_disasters_m5.csv' WorldDisaster
 .import './Hurricanes/pacific.csv' PHurricanes
 .import '/Tsunamis/waves.csv' Waves
+.import '/Tsunamis/sources.csv' Sources
 
 
 CREATE TABLE sqlitestudio_temp_table AS SELECT *
@@ -334,3 +505,87 @@ INSERT INTO Fires (
                     FROM sqlitestudio_temp_table;
 
 DROP TABLE sqlitestudio_temp_table;
+CREATE TABLE sqlitestudio_temp_table AS SELECT *
+                                          FROM Hurricanes;
+
+DROP TABLE Hurricanes;
+
+CREATE TABLE Hurricanes (
+    H_key             INTEGER (4, 0),
+    H_Id              VARCHAR (9, 0),
+    H_Name            VARCHAR (10, 0),
+    H_dates           DATE,
+    H_time            INTEGER (4, 0),
+    H_event           VARCHAR (1, 0),
+    H_status          VARCHAR (2, 0),
+    H_latitude        VARCHAR (5, 0),
+    H_longitude       VARCHAR (6, 0),
+    H_maximumWind     INTEGER (3, 0),
+    H_minimumPressure INTEGER (4, 0),
+    H_LowWindNE       INTEGER (3, 0),
+    H_LowWindSE       INTEGER (3, 0),
+    H_LowWindSW       INTEGER (3, 0),
+    H_ModerateWindNE  INTEGER (3, 0),
+    H_ModerateWindSE  INTEGER (3, 0),
+    H_ModerateWindSW  INTEGER (3, 0),
+    H_ModerateWindNW  INTEGER (3, 0),
+    H_HighWindNE      INTEGER (3, 0),
+    H_HighWindSE      INTEGER (3, 0),
+    H_HighWindSW      INTEGER (3, 0),
+    H_HighWindNW      INTEGER (3, 0) 
+);
+
+INSERT INTO Hurricanes (
+                           H_key,
+                           H_Id,
+                           H_Name,
+                           H_dates,
+                           H_time,
+                           H_event,
+                           H_status,
+                           H_latitude,
+                           H_longitude,
+                           H_maximumWind,
+                           H_minimumPressure,
+                           H_LowWindNE,
+                           H_LowWindSE,
+                           H_LowWindSW,
+                           H_ModerateWindNE,
+                           H_ModerateWindSE,
+                           H_ModerateWindSW,
+                           H_ModerateWindNW,
+                           H_HighWindNE,
+                           H_HighWindSE,
+                           H_HighWindSW,
+                           H_HighWindNW
+                       )
+                       SELECT H_key,
+                              H_Id,
+                              H_Name,
+                              H_dates,
+                              H_time,
+                              H_event,
+                              H_status,
+                              H_latitude,
+                              H_longitude,
+                              H_maximumWing,
+                              H_minimumPressure,
+                              H_LowWindNE,
+                              H_LowWingSE,
+                              H_LowWindSW,
+                              H_ModerateWindNE,
+                              H_ModerateWindSE,
+                              H_ModerateWindSW,
+                              H_ModerateWindNW,
+                              H_HighWindNE,
+                              H_HighWindSE,
+                              H_HighWindSW,
+                              H_HighWindNW
+                         FROM sqlitestudio_temp_table;
+
+DROP TABLE sqlitestudio_temp_table;
+
+SELECT * FROM Waves
+WHERE W_State = "GREECE" and W_year = 1996;
+
+SELECT * 
