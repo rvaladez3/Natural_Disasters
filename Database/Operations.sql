@@ -1640,9 +1640,9 @@ SELECT *
 
 -- DROP TABLE sqlitestudio_temp_table
 
-SELECT *
-FROM Earthquakes
-WHERE e_earthquakeIdNum >= 21557 
+-- SELECT *
+-- FROM Earthquakes
+-- WHERE e_earthquakeIdNum >= 21557 
 
 -- CREATE TABLE sqlitestudio_temp_table AS SELECT *
 --                                           FROM WorldDisaster;
@@ -1667,10 +1667,11 @@ WHERE e_earthquakeIdNum >= 21557
 
 -- DROP TABLE sqlitestudio_temp_table;
 
--- CREATE TABLE sqlitestudio_temp_table AS SELECT * 
---                                         FROM Earthquakes
+--  CREATE TABLE sqlitestudio_temp_table AS SELECT * 
+--                                          FROM Earthquakes
+--                                            WHERE e_earthquakeIdNum >= 21557;
 
--- DROP TABLE Earthquakes
+--  DROP TABLE Earthquakes
 
 -- CREATE TABLE Earthquakes (
 --     e_earthquakeIdNum         INTEGER        PRIMARY KEY AUTOINCREMENT
@@ -1689,89 +1690,89 @@ WHERE e_earthquakeIdNum >= 21557
 --     e_status                  VARCHAR (8)    NOT NULL
 -- );
 
--- INSERT INTO Earthquakes SELECT * FROM sqlitestudio_temp_table WHERE sqlitestudio_temp_table.e_earthquakeIdNum >= 21557;
+-- INSERT INTO Earthquakes SELECT * FROM sqlitestudio_temp_table ;
 
 -- DROP TABLE sqlitestudio_temp_table;
-CREATE TABLE sqlitestudio_temp_table AS SELECT *
-                                          FROM Hurricanes;
+-- CREATE TABLE sqlitestudio_temp_table AS SELECT *
+--                                           FROM Hurricanes;
 
-DROP TABLE Hurricanes;
+-- DROP TABLE Hurricanes;
 
-CREATE TABLE Hurricanes (
-    H_key             INTEGER (4, 0),
-    H_Id              VARCHAR (9, 0),
-    H_Name            VARCHAR (10, 0),
-    H_dates           DATE,
-    H_time            INTEGER (4, 0),
-    H_event           VARCHAR (1, 0),
-    H_status          VARCHAR (2, 0),
-    H_latitude        VARCHAR (5, 0),
-    H_longitude       VARCHAR (6, 0),
-    H_maximumWind     INTEGER (3, 0),
-    H_minimumPressure INTEGER (4, 0),
-    H_LowWindNE       INTEGER (3, 0),
-    H_LowWindSE       INTEGER (3, 0),
-    H_LowWindSW       INTEGER (3, 0),
-    H_ModerateWindNE  INTEGER (3, 0),
-    H_ModerateWindSE  INTEGER (3, 0),
-    H_ModerateWindSW  INTEGER (3, 0),
-    H_ModerateWindNW  INTEGER (3, 0),
-    H_HighWindNE      INTEGER (3, 0),
-    H_HighWindSE      INTEGER (3, 0),
-    H_HighWindSW      INTEGER (3, 0),
-    H_HighWindNW      INTEGER (3, 0) 
-);
+-- CREATE TABLE Hurricanes (
+--     H_key             INTEGER (4, 0),
+--     H_Id              VARCHAR (9, 0),
+--     H_Name            VARCHAR (10, 0),
+--     H_dates           DATE,
+--     H_time            INTEGER (4, 0),
+--     H_event           VARCHAR (1, 0),
+--     H_status          VARCHAR (2, 0),
+--     H_latitude        VARCHAR (5, 0),
+--     H_longitude       VARCHAR (6, 0),
+--     H_maximumWind     INTEGER (3, 0),
+--     H_minimumPressure INTEGER (4, 0),
+--     H_LowWindNE       INTEGER (3, 0),
+--     H_LowWindSE       INTEGER (3, 0),
+--     H_LowWindSW       INTEGER (3, 0),
+--     H_ModerateWindNE  INTEGER (3, 0),
+--     H_ModerateWindSE  INTEGER (3, 0),
+--     H_ModerateWindSW  INTEGER (3, 0),
+--     H_ModerateWindNW  INTEGER (3, 0),
+--     H_HighWindNE      INTEGER (3, 0),
+--     H_HighWindSE      INTEGER (3, 0),
+--     H_HighWindSW      INTEGER (3, 0),
+--     H_HighWindNW      INTEGER (3, 0) 
+-- );
 
-INSERT INTO Hurricanes (
-                           H_key,
-                           H_Id,
-                           H_Name,
-                           H_dates,
-                           H_time,
-                           H_event,
-                           H_status,
-                           H_latitude,
-                           H_longitude,
-                           H_maximumWind,
-                           H_minimumPressure,
-                           H_LowWindNE,
-                           H_LowWindSE,
-                           H_LowWindSW,
-                           H_ModerateWindNE,
-                           H_ModerateWindSE,
-                           H_ModerateWindSW,
-                           H_ModerateWindNW,
-                           H_HighWindNE,
-                           H_HighWindSE,
-                           H_HighWindSW,
-                           H_HighWindNW
-                       )
-                       SELECT H_key,
-                              H_Id,
-                              H_Name,
-                              H_dates,
-                              H_time,
-                              H_event,
-                              H_status,
-                              H_latitude,
-                              H_longitude,
-                              H_maximumWing,
-                              H_minimumPressure,
-                              H_LowWindNE,
-                              H_LowWingSE,
-                              H_LowWindSW,
-                              H_ModerateWindNE,
-                              H_ModerateWindSE,
-                              H_ModerateWindSW,
-                              H_ModerateWindNW,
-                              H_HighWindNE,
-                              H_HighWindSE,
-                              H_HighWindSW,
-                              H_HighWindNW
-                         FROM sqlitestudio_temp_table;
+-- INSERT INTO Hurricanes (
+--                            H_key,
+--                            H_Id,
+--                            H_Name,
+--                            H_dates,
+--                            H_time,
+--                            H_event,
+--                            H_status,
+--                            H_latitude,
+--                            H_longitude,
+--                            H_maximumWind,
+--                            H_minimumPressure,
+--                            H_LowWindNE,
+--                            H_LowWindSE,
+--                            H_LowWindSW,
+--                            H_ModerateWindNE,
+--                            H_ModerateWindSE,
+--                            H_ModerateWindSW,
+--                            H_ModerateWindNW,
+--                            H_HighWindNE,
+--                            H_HighWindSE,
+--                            H_HighWindSW,
+--                            H_HighWindNW
+--                        )
+--                        SELECT H_key,
+--                               H_Id,
+--                               H_Name,
+--                               H_dates,
+--                               H_time,
+--                               H_event,
+--                               H_status,
+--                               H_latitude,
+--                               H_longitude,
+--                               H_maximumWing,
+--                               H_minimumPressure,
+--                               H_LowWindNE,
+--                               H_LowWingSE,
+--                               H_LowWindSW,
+--                               H_ModerateWindNE,
+--                               H_ModerateWindSE,
+--                               H_ModerateWindSW,
+--                               H_ModerateWindNW,
+--                               H_HighWindNE,
+--                               H_HighWindSE,
+--                               H_HighWindSW,
+--                               H_HighWindNW
+--                          FROM sqlitestudio_temp_table;
 
-DROP TABLE sqlitestudio_temp_table;
-<<<<<<< HEAD
+-- DROP TABLE sqlitestudio_temp_table;
+-- <<<<<<< HEAD
 
 --What earthquakes have occurrded in sites that are close to site where fires have been declared
 SELECT *
@@ -1814,6 +1815,8 @@ WHERE e_time <= '12%' AND
     e_Magnitude > 5.0 AND
     e_depth <= 10
 
-=======
->>>>>>> e7eee841f2a7c55a8277b3fdc5a3d698baa4f760
->>>>>>> 63ae04abab68e165e01fef6ab40cd91316c37804
+--
+
+-- =======
+-- >>>>>>> e7eee841f2a7c55a8277b3fdc5a3d698baa4f760
+-- >>>>>>> 63ae04abab68e165e01fef6ab40cd91316c37804
