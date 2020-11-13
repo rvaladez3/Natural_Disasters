@@ -548,7 +548,7 @@ INSERT INTO Hurricanes (
                            H_longitude,
                            H_maximumWind,
                            H_minimumPressure,
-                           H_LowWindNE,
+z                           H_LowWindNE,
                            H_LowWindSE,
                            H_LowWindSW,
                            H_ModerateWindNE,
@@ -1178,4 +1178,46 @@ INSERT INTO Hurricanes (
                          FROM sqlitestudio_temp_table;
 
 DROP TABLE sqlitestudio_temp_table;
+
+--What earthquakes have occurrded in sites that are close to site where fires have been declared
+SELECT *
+FROM Earthquakes, Fires
+WHERE substr(e_longitude, 1, 4) LIKE substr(f_longitude, 1, 4)
+
+--How many earthquakes and fires have been declared at similar times
+SELECT * 
+FROM Earthquakes, Fires
+WHERE substr(e_date,6,9)  LIKE substr(f_started, 1,4)
+    AND substr(substr(e_date, 3,3),1,2) = substr(substr(f_started, 5,6), 2,2)
+
+--How many fires have occured in each county per each year?
+SELECT DISTINCT f_counties, substr(f_started, 1,4) AS Year, COUNT(*) as Fire_Count
+FROM Fires
+GROUP BY f_counties, substr(f_started, 1,4)
+ORDER BY substr(f_started, 1,4)
+
+--Where were the fires in each county burned the most acres located
+SELECT f_counties,f_location, MAX(f_acresBurned) as Burned
+FROM Fires
+GROUP BY f_counties
+
+--How many different types disasters were reported per year in each state that have more than one natural disaster occurrences? 
+SELECT wd_state, substr(wd_declarationDate, 1,4) as YEAR, COUNT(DISTINCT wd_incidentType) as Types_of_WD
+FROM WorldDisaster
+GROUP BY substr(wd_declarationDate, 1,4), wd_state
+HAVING Types_of_WD > 1
+
+--How many earthquakes were followed by more than one aftershock?
+SELECT e_date, COUNT(*) as Tremors
+FROM Earthquakes
+GROUP BY e_date
+HAVING Tremors > 3
+
+--How many earthquakes happened in the morning of the day that have a magnitude greater than 5.0 and occured 10 units or less deep under tha crust of the earth?
+SELECT *
+FROM Earthquakes
+WHERE e_time <= '12%' AND
+    e_Magnitude > 5.0 AND
+    e_depth <= 10
+
 >>>>>>> 63ae04abab68e165e01fef6ab40cd91316c37804
