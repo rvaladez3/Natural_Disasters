@@ -1872,9 +1872,12 @@ SET S_year = REPLACE(S_year, 2008, 2017);
 -- JOIN Waves ON Waves.W_sourceId = Sources.S_ID
 -- WHERE Waves.W_sourceId = 3647;
 
+UPDATE Earthquakes
+SET e_date = REPLACE(e_date, 2016, 2018)
+WHERE e_earthquakeIdNum > 22944;
 
--- DELETE FROM Earthquakes 
--- WHERE e_earthquakeIdNum = 21557;
+DELETE FROM Earthquakes 
+WHERE e_earthquakeIdNum < 22040;
 
 -- DELETE FROM Waves 
 -- WHERE W_year  BETWEEN -2000 AND 2008; 
