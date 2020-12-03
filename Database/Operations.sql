@@ -1,5 +1,3 @@
--- <<<<<<< HEAD
--- <<<<<<< HEAD
 -- CREATE TABLE Fires
 -- (
 --     f_acresBurned DECIMAL(7,0) NOT NULL,
@@ -1837,8 +1835,9 @@ WHERE substr(res1.S_latitude, 1, 2) LIKE substr(res1.e_latitude, 1, 2) AND
     substr(res1.S_longitude, 1, 3) LIKE substr(res1.e_longitude, 1, 3) AND
     W_sourceId = res1.S_ID
 GROUP BY W_sourceId
-HAVING W_travelTimeHours > 10
+HAVING W_travelTimeHours > 10;
 
+<<<<<<< HEAD
 --Was there ever times where there could've been a fire tornado at any recorded site
 SELECT *
 FROM Fires, Hurricanes
@@ -1849,7 +1848,49 @@ WHERE substr(H_latitude,1,3) LIKE substr(f_latitude, 1,3) AND
     substr(substr(H_dates,6,6),2,3) LIKE substr(substr(substr(f_started,6,7), 3, 4), 2,2)
 
 --
+=======
+UPDATE Sources
+SET S_year = REPLACE(S_year, 2011, 2018);
 
--- =======
--- >>>>>>> e7eee841f2a7c55a8277b3fdc5a3d698baa4f760
--- >>>>>>> 63ae04abab68e165e01fef6ab40cd91316c37804
+>>>>>>> eca508d8e054b03f0492b6ca594ad771db5327a4
+
+UPDATE Sources
+SET S_year = REPLACE(S_year, 2011, 2018);
+
+UPDATE Waves
+SET W_year = REPLACE(W_year, 2015, 2018);
+
+
+DELETE FROM Waves 
+WHERE W_year  = 2011; 
+
+SELECT * FROM Sources;
+
+UPDATE Sources
+SET S_year = REPLACE(S_year, -2000, 2023);
+
+SELECT * FROM Sources
+WHERE S_year = 2023;
+
+DELETE FROM Sources 
+WHERE S_year  = 2023; 
+
+UPDATE Sources
+SET S_year = REPLACE(S_year, 2008, 2017);
+
+-- DELETE FROM Waves 
+-- WHERE W_year  BETWEEN -2000 AND 2008;
+
+-- SELECT * FROM Sources
+-- JOIN Waves ON Waves.W_sourceId = Sources.S_ID
+-- WHERE Waves.W_sourceId = 3647;
+
+UPDATE Earthquakes
+SET e_date = REPLACE(e_date, 2016, 2018)
+WHERE e_earthquakeIdNum > 22944;
+
+DELETE FROM Earthquakes 
+WHERE e_earthquakeIdNum < 22040;
+
+-- DELETE FROM Waves 
+-- WHERE W_year  BETWEEN -2000 AND 2008; 
