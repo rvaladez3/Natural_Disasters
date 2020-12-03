@@ -1,17 +1,25 @@
-{% extends 'base.html' %}
-
-{% block navbar %}
-<div>
-    <ul>
-        <li>World Disaster</li>
-        <li>Fires</li>
-    </ul>
-</div>
-{% endblock%}
-
-{% block head %}
-<div>
-    <input type="text" />
-</div>
+{% extends "base.html" %}
+{% block title%}{% endblock %}
+{% block navbar%}
+<link rel="stylesheet" href= "static/css/styles.css">
+<h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
 {% endblock %}
 
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head> 
+<title>Natural disaster</title> 
+    </head>
+    <body>
+        <h1>Natural Disasters
+        </h1>
+        <h1>2016 - 2018</h1>
+        {% for x in disaster %}
+		        <p>{{x}}</p>
+        {%endfor%}
+    </body>
+</html> -->
