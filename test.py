@@ -18,6 +18,7 @@ db.init_app(app)
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key = True)
     name =db.Column("name", db.String(100), nullable=False)
+    
     email = db.Column("email", db.String(100), nullable = False)
 
     def __init__(self, name, email):
@@ -60,23 +61,40 @@ def Dnearby():
   # this is used to stores data as a dictionary
         return render_template("Dnearby.html")
 
-@app.route("/disasters", methods = ["POST", "GET"])
+
+@app.route("/disasters", methods = ["GET"])
 def user():
-    email = None
-    if "user" in session:
-        user = session["user"]
+        return render_template("disasters.html")
+    
+#each disaster has their own webpage to display their own tables    
+    
+@app.route("/earthquakes", methods = ["GET"])
+def earthquake():
+        return render_template("earthquake.html")
+    
+@app.route("/hurricanes", methods = ["GET"])
+def hurricanes():
+        return render_template("hurricanes.html")
 
-        if request.method == "POST":
-            email = request.form["email"]
-            session["email"] = email
-            flash("Email was saved for future notifications!")
-        else:
-            if "email" in session:
-                email = session["email"]
-        return render_template("user.html", email = email)
-    else:
-        return redirect(url_for("login"))
+@app.route("/wildfires", methods = ["GET"])
+def wildfires():
+        return render_template("wildfires.html")
+    
+@app.route("/wsources", methods = ["GET"])
+def wsources():
+        return render_template("wsources.html")
 
+@app.route("/winfo", methods = ["GET"])
+def winfo():
+        return render_template("winfo.html")
+
+@app.route("/WD", methods = ["GET"])
+def WD():
+        return render_template("WD.html")
+
+@app.route("/charts", methods = ["GET"])
+def WD():
+        return render_template("charts.html")
 
 @app.route("/logout")
 def logout():
