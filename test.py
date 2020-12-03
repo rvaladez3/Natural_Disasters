@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
-from sqlalchemy import create_engine, exc
+from sqlalchemy import create_engine, exc, text
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 app = Flask(__name__)
@@ -42,6 +42,7 @@ def login():
         return redirect(url_for("user"))
     else:
         return render_template("login.html")
+
 # @app.route("/earthquake", methods=["POST", "GET"])
 
 # def earthquake():
