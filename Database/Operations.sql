@@ -1894,3 +1894,7 @@ WHERE e_earthquakeIdNum < 22040;
 
 -- DELETE FROM Waves 
 -- WHERE W_year  BETWEEN -2000 AND 2008; 
+
+SELECT AVG(e_Magnitude) FROM Earthquakes
+WHERE e_longitude > 100
+GROUP BY e_Magnitude;
