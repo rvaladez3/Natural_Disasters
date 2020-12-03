@@ -1839,7 +1839,16 @@ WHERE substr(res1.S_latitude, 1, 2) LIKE substr(res1.e_latitude, 1, 2) AND
 GROUP BY W_sourceId
 HAVING W_travelTimeHours > 10
 
+--Was there ever times where there could've been a fire tornado at any recorded site
+SELECT *
+FROM Fires, Hurricanes
+WHERE substr(H_latitude,1,3) LIKE substr(f_latitude, 1,3) AND
+    substr(H_longitude, 1, 4) LIKE substr(f_longitude, 1,4) AND
+    substr(H_dates, 1,4) LIKE substr(f_started, 1, 4) AND
+    substr(substr(H_dates,4,4), 2, 2) LIKE substr(substr(f_started, 5, 5), 2,2) AND
+    substr(substr(H_dates,6,6),2,3) LIKE substr(substr(substr(f_started,6,7), 3, 4), 2,2)
 
+--
 
 -- =======
 -- >>>>>>> e7eee841f2a7c55a8277b3fdc5a3d698baa4f760
