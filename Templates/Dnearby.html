@@ -1,6 +1,118 @@
 {% extends "base.html" %}
-{% block title%} blah blajsd{% endblock %}
-{% block navbar%}
+    {% block navbar%}
 <link rel="stylesheet" href= "static/css/styles.css">
 <h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
+{% endblock %}
+{% block body %}
+    <div>
+        <h1>Would you be in a World Disaster?</h1>
+        <h4>Enter you coordinates and find out</h4>
+        <form method="GET">
+            <input type = 'text' name = 'long' placeholder="Longitude" />
+            <input type = 'text' name = 'lat' placeholder="Latitude" />
+            <button type = 'submit' value = 'value'>Search</button>
+        </form>
+    </div>
+{% endblock %}
+{% block res %}
+<div style="display: inline-block;">
+    {% if result1 %}
+    You would be in a Tsunamis
+        {% for res in result1 %}
+            <div  > 
+                <table class="table-bordered table-dark" style="display:inline-table" >
+                    <thead>
+                            <tr>
+                                <th scope="col">Location</th>
+                                <td scope="col">Country</td>
+                                <td  scope="col">Magnitude</td>
+                                <td  scope="col">Year</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{res[13]}}</th>
+                            <td >{{res[11]}}</td>
+                            <td >{{res[9]}}</td>
+                            <td >{{res[1]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if result2 %}
+        {% for res in result2 %}
+            <div>
+                <table style="display: inline-table;" class="table-bordered bg-success">
+                    <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <td scope="col">Depth</td>
+                                <td scope="col">Magnitude</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{res[1]}}</th>
+                            <td>{{res[6]}}</td>
+                            <td>{{res[7]}}</td>                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+    {% if result3 %}
+            You would be in a FIre
+        {% for res in result3 %}
+            <div>
+                <table style="display: inline-table;" class="table table-bordered table-info">
+                    <thead>
+                            <tr>
+                                <th scope="col">Acres Burned</th>
+                                <td scope="col">Year</td>
+                                <td scope="col">Location</td>
+                                <td scope="col">Started</td>
+                                <td scope="col">Extinguished</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{res[1]}}</th>
+                            <td>{{res[4]}}</td>
+                            <td>{{res[15]}}</td>
+                            <td>{{res[16]}}</td>
+                            <td>{{res[9]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+    {% if result5 %}
+            You would be in a Hurricane
+        {% for res in result5 %}
+        <div>
+                <table style="display: inline-table;" class="table table-bordered table-warning" >
+                    <thead>
+                            <tr>
+                                <th>Name</th>
+                                <td>Max Wind</td>
+                                <td>Pressure</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{res[2]}}</td>
+                            <td>{{res[9]}}</td>
+                            <td>{{res[10]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}

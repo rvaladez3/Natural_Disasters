@@ -73,7 +73,45 @@ def login():
 @app.route("/Dnearby", methods=["GET"])
 def Dnearby():
     # this is used to stores data as a dictionary
-    return render_template("Dnearby.html")
+    if request.method == "GET":
+        print(request.args.get("lat"))
+        print(request.args.get("long"))
+        lat = request.args.get("lat")
+        lat = "%" + lat + "%"
+        long = request.args.get("long")
+        long = "%" + long + "%"
+        cords = [lat, long]
+        print(cords)
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql1 = "SELECT * FROM Sources WHERE S_latitude LIKE (?) AND S_longitude LIKE (?)"
+        result1 = cur.execute(sql1, cords)
+        result1 = result1.fetchall()
+
+        sql2 = "SELECT * FROM Earthquakes WHERE e_latitude LIKE (?) AND e_longitude LIKE (?)"
+        result2 = cur.execute(sql2, cords)
+        result2 = result2.fetchall()
+
+        sql3 = "SELECT * FROM Fires WHERE f_latitude LIKE (?) AND f_longitude LIKE (?)"
+        result3 = cur.execute(sql3, cords)
+        result3 = result3.fetchall()
+
+        sql4 = "SELECT * FROM Fires WHERE f_latitude LIKE (?) AND f_longitude LIKE (?)"
+        result4 = cur.execute(sql4, cords)
+        result4 = result4.fetchall()
+
+        sql5 = "SELECT * FROM Hurricanes WHERE H_latitude LIKE (?) AND H_longitude LIKE (?)"
+        result5 = cur.execute(sql5, cords)
+        result5 = result5.fetchall()
+
+        sql6 = "SELECT * FROM Waves WHERE W_distanceFromSource LIKE (?) AND W_travelTimeHOurs LIKE (?)"
+        result6 = cur.execute(sql6, cords)
+        result6 = result6.fetchall()
+
+
+        return render_template("Dnearby.html", result1 = result1, result2 = result2, result3 = result3, result4= result4, result5 = result5, result6 = result6)
+    else:
+        return render_template("Dnearby.html")
 
 
 @app.route("/disasters", methods=["GET"])
@@ -86,7 +124,6 @@ def user():
 
 @app.route("/earthquakes", methods=["GET"])
 def earthquake():
-
     return render_template("earthquake.html")
 
 
@@ -117,7 +154,7 @@ def winfo():
     sql = "SELECT * FROM Waves"
     result = cur.execute(sql)
     result = result.fetchall()
-    return render_template("winfo.html", result = result)
+    return render_template("winfo.html", result=result)
 
 
 @app.route("/WD", methods=["GET"])
