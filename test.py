@@ -1,17 +1,30 @@
-from flask import (
-    Flask,
-    redirect,
-    url_for,
-    render_template,
-    request,
-    session,
-    flash,
-    jsonify,
-)
-import sqlite3
-from sqlite3 import Error
+# from flask import (
+#     Flask,
+#     redirect,
+#     url_for,
+#     render_template,
+#     request,
+#     session,
+#     flash,
+#     jsonify,
+# )
+# import sqlite3
+# from sqlite3 import Error
+# import os
+# from flask_bootstrap import Bootstrap
+
 import os
-from flask_bootstrap import Bootstrap
+import sqlite3
+
+from flask import g
+from flask import Flask, redirect, url_for, render_template, request, session, flash, jsonify
+from datetime import timedelta
+from flask_sqlalchemy import SQLAlchemy
+from flask_session import Session
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy import create_engine, exc
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
 currentDirectory = os.path.dirname(os.path.abspath(__file__))
 data = currentDirectory + "/Database/data.db"
@@ -19,7 +32,8 @@ users = currentDirectory + "/users.sqlite3"
 
 
 app = Flask(__name__)
-Bootstrap(app)
+# Bootstrap(app)
+db = SQLAlchemy(app)
 
 
 @app.route("/")
@@ -122,19 +136,36 @@ def user():
 # each disaster has their own webpage to display their own tables
 
 
-@app.route("/earthquakes", methods=["GET"])
+@app.route("/earthquakes", methods = ["GET"])
 def earthquake():
-    return render_template("earthquake.html")
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        cursor = connection.cursor()
+        q1 = "SELECT * from Earthquakes"
+        result = cursor.execute(q1)
+        result = result.fetchall()
+        return render_template("earthquake.html", data = result )
 
 
-@app.route("/hurricanes", methods=["GET"])
+@app.route("/hurricanes", methods = ["GET"])
 def hurricanes():
-    return render_template("hurricanes.html")
+     if request.method == "GET":
+        connection = sqlite3.connect(data)
+        cursor = connection.cursor()
+        q1 = "SELECT * from Hurricanes"
+        result = cursor.execute(q1)
+        result = result.fetchall()
+        return render_template("hurricanes.html", data = result)
 
-
-@app.route("/wildfires", methods=["GET"])
+@app.route("/wildfires", methods = ["GET"])
 def wildfires():
-    return render_template("wildfires.html")
+        if request.method == "GET":
+                connection = sqlite3.connect(data)
+                cursor = connection.cursor()
+                q1 = "SELECT * from Fires"
+                result = cursor.execute(q1)
+                result = result.fetchall()
+                return render_template("wildfires.html", data = result)
 
 
 @app.route("/wsources", methods=["GET"])
