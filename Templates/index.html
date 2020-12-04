@@ -5,6 +5,38 @@
 <h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
 {% endblock %}
 
+{% block Buttons %}
+<div>
+    <form method="GET" action="#">
+        <input type ="radio" name = "Query" id= "One" value="One" >
+        <label>One</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Two" >
+        <label>Two</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Three" >
+        <label>Three</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Four" >
+        <label>Four</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Five" >
+        <label>Five</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Six" >
+        <label>Six</label>
+        <br/>
+        <input name = 'Input' type ="submit" >
+    </form>
+
+    {% if result %}
+        {% for res in result %}
+            <p>{{r}}</p>
+        {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}
 
 
 

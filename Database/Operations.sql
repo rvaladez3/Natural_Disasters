@@ -1788,7 +1788,7 @@ WHERE substr(e_date,6,9)  LIKE substr(f_started, 1,4)
 SELECT DISTINCT f_counties, substr(f_started, 1,4) AS Year, COUNT(*) as Fire_Count
 FROM Fires
 GROUP BY f_counties, substr(f_started, 1,4)
-ORDER BY substr(f_started, 1,4)
+ORDER BY substr(f_started, 1,4);
 
 --Where were the fires in each county burned the most acres located
 SELECT f_counties, f_location, MAX(f_acresBurned) as Burned
@@ -1837,7 +1837,6 @@ WHERE substr(res1.S_latitude, 1, 2) LIKE substr(res1.e_latitude, 1, 2) AND
 GROUP BY W_sourceId
 HAVING W_travelTimeHours > 10;
 
-<<<<<<< HEAD
 --Was there ever times where there could've been a fire tornado at any recorded site
 SELECT *
 FROM Fires, Hurricanes
@@ -1848,11 +1847,9 @@ WHERE substr(H_latitude,1,3) LIKE substr(f_latitude, 1,3) AND
     substr(substr(H_dates,6,6),2,3) LIKE substr(substr(substr(f_started,6,7), 3, 4), 2,2)
 
 --
-=======
 UPDATE Sources
 SET S_year = REPLACE(S_year, 2011, 2018);
 
->>>>>>> eca508d8e054b03f0492b6ca594ad771db5327a4
 
 UPDATE Sources
 SET S_year = REPLACE(S_year, 2011, 2018);

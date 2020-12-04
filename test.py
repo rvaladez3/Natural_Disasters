@@ -22,10 +22,24 @@ app = Flask(__name__)
 Bootstrap(app)
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
-
-    return render_template("index.html")
+    if request.method == "GET":
+        Usr = request.args.get("Query")
+        result = None
+        if Usr == "One":
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = """SELECT DISTINCT f_counties, substr(f_started, 1,4) AS Year, COUNT(*) as Fire_Count
+                     FROM Fires
+                     GROUP BY f_counties, substr(f_started, 1,4)
+                     ORDER BY substr(f_started, 1,4)
+                     """
+            result = cur.execute(sql)
+            result = result.fetchall()
+        return render_template("index.html", result = result)
+    else:
+        return render_template("index.html")
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -77,14 +91,15 @@ def Dnearby():
         print(request.args.get("lat"))
         print(request.args.get("long"))
         lat = request.args.get("lat")
-        lat = "%" + lat + "%"
+        lat = lat
         long = request.args.get("long")
-        long = "%" + long + "%"
         cords = [lat, long]
         print(cords)
         connection = sqlite3.connect(data)
         cur = connection.cursor()
-        sql1 = "SELECT * FROM Sources WHERE S_latitude LIKE (?) AND S_longitude LIKE (?)"
+        sql1 = (
+            "SELECT * FROM Sources WHERE S_latitude LIKE (?) AND S_longitude LIKE (?)"
+        )
         result1 = cur.execute(sql1, cords)
         result1 = result1.fetchall()
 
@@ -108,8 +123,15 @@ def Dnearby():
         result6 = cur.execute(sql6, cords)
         result6 = result6.fetchall()
 
-
-        return render_template("Dnearby.html", result1 = result1, result2 = result2, result3 = result3, result4= result4, result5 = result5, result6 = result6)
+        return render_template(
+            "Dnearby.html",
+            result1=result1,
+            result2=result2,
+            result3=result3,
+            result4=result4,
+            result5=result5,
+            result6=result6,
+        )
     else:
         return render_template("Dnearby.html")
 
