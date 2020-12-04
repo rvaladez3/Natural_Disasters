@@ -2,14 +2,63 @@
 {% block title%}  {% endblock %}
 {% block navbar%}
 
-<a href="/earthquakes" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Earthquakes</a>
-<a href="/hurricanes" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Hurricanes</a>
-<a href="/wildfires" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Wildfires</a>
-<a href="/wsources" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Waves Sources</a>
-<a href="/winfo" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Waves info</a>
-<a href="/WD" class="btn btn-light btn-lg active" role="button" aria-pressed="true">World Disasters</a>
-
-
+<link rel="stylesheet" href= "static/css/disaster_e.css">
+  <a href="/earthquakes" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Earthquakes</a>
+  <a href="/hurricanes" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Hurricanes</a>
+  <a href="/wildfires" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Wildfires</a>
+  <a href="/wsources" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Waves Sources</a>
+  <a href="/winfo" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Waves info</a>
+  <a href="/WD" class="btn btn-light btn-lg active" role="button" aria-pressed="true">World Disasters</a>
+  
 <h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
 <img src="static/images/earthquake.jpg" width = "900" height = "400" alt = "ND" class = "center">
 {% endblock %}
+
+{% block body %}
+  <div>
+          <table  class="table table-dark">
+              <thead>
+                  <tr>
+                      <th scope="col">earthquakeId</td>
+                      <td scope="col">e_date</td>
+                      <td scope="col">e_time</td>
+                      <td scope="col">e_latitude</td>
+                      <td scope="col">e_longitude</td>
+                      <td scope="col">e_type</td>
+                      <td scope="col">e_depth</td>
+                      <td scope="col">e_Magnitude</td>
+                      <td scope="col">e_MagnitudeType</td>
+                      <td scope="col">e_locationSource</td>
+                      <td scope="col">e_Magnitude</td>
+                      <td scope="col">e_Magnitude</td>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for s in data%}
+                  <tr>
+
+                    <td>{{s[0]}}</td>
+                    <td>{{s[1]}}</td>
+                    <td>{{s[2]}}</td>
+                    <td>{{s[3]}}</td>
+                    <td>{{s[4]}}</td>
+                    <td>{{s[5]}}</td>
+                    <td>{{s[6]}}</td>
+                    <td>{{s[7]}}</td>
+                    <td>{{s[8]}}</td>
+                    <td>{{s[9]}}</td>
+                    <td>{{s[10]}}</td>
+                    <td>{{s[11]}}</td>
+                    <td>{{s[12]}}</td>
+                  </tr>
+                {% endfor%}
+                   
+              </tbody>
+          </table>
+      </div>
+{% endblock %}
+
+
+
+
+
