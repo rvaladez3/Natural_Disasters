@@ -1898,3 +1898,5 @@ WHERE e_earthquakeIdNum < 22040;
 SELECT AVG(e_Magnitude) FROM Earthquakes
 WHERE e_longitude > 100
 GROUP BY e_Magnitude;
+
+
