@@ -5,6 +5,170 @@
 <h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
 {% endblock %}
 
+{% block Buttons %}
+<div>
+    <form method="GET" action="#">
+        <input type ="radio" name = "Query" id= "One" value="One" >
+        <label>One</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Two" >
+        <label>Two</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Three" >
+        <label>Three</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Four" >
+        <label>Four</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Five" >
+        <label>Five</label>
+        <br/>
+        <input type ="radio" name = "Query" id= "One" value="Six" >
+        <label>Six</label>
+        <br/>
+        <input name = 'Input' type ="submit" >
+    </form>
+    <div>
+        {% if result %}
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Countries</th>
+                        <td scope="col">Year</td>
+                        <td scope="col">Fire Count Per County</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in result %}
+                        <tr scope="row"></tr>
+                            <th>{{res[0]}}</th>
+                            <td>{{res[1]}}</td>
+                            <td>{{res[2]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% if result1 %}
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Countries</th>
+                        <td scope="col">Location</td>
+                        <td scope="col">MAX ACRES BURNED PER COUNTY</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in result1 %}
+                        <tr scope="row"></tr>
+                            <th>{{res[0]}}</th>
+                            <td>{{res[1]}}</td>
+                            <td>{{res[2]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
+        {% if result2 %}
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <td scope="col">Tremor Count</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in result2 %}
+                        <tr scope="row"></tr>
+                            <th>{{res[0]}}</th>
+                            <td>{{res[1]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
+        {% if result3 %}
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">State</th>
+                        <td scope="col">Year</td>
+                        <td scope="col">Count of Types World Disasters for each state per Year</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in result3 %}
+                        <tr scope="row"></tr>
+                            <th>{{res[0]}}</th>
+                            <td>{{res[1]}}</td>
+                            <td>{{res[2]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
+        {% if result4 %}
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Earthquake Id</th>
+                        <td scope="col">Date</td>
+                        <td scope="col">Fire Id</td>
+                        <td scope="col">Counties</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in result4 %}
+                        <tr scope="row"></tr>
+                            <th>{{res[0]}}</th>
+                            <td>{{res[1]}}</td>
+                            <td>{{res[2]}}</td>
+                            <td>{{res[3]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
+
+        {% if result5 %}
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Earthquake Id</th>
+                        <td scope="col">Date</td>
+                        <td scope='col'>Time</td>
+                        <td scope="col">Fire Id</td>
+                        <td scope="col">Counties</td>
+                        <td scope='col'>Fire Started</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in result5 %}
+                        <tr scope="row"></tr>
+                            <th>{{res[0]}}</th>
+                            <td>{{res[1]}}</td>
+                            <td>{{res[2]}}</td>
+                            <td>{{res[3]}}</td>
+                            <td>{{res[4]}}</td>
+                            <td>{{res[5]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+
+
+</div>
+{% endblock %}
 
 
 

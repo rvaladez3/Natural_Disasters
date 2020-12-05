@@ -1774,12 +1774,12 @@ WHERE W_State = "GREECE" and W_year = 1996;
 -- <<<<<<< HEAD
 
 --What earthquakes have occurrded in sites that are close to site where fires have been declared
-SELECT *
+SELECT e_earthquakeIdNum, e_date, f_fireIdNum, f_counties
 FROM Earthquakes, Fires
 WHERE substr(e_longitude, 1, 4) LIKE substr(f_longitude, 1, 4)
 
 --How many earthquakes and fires have been declared at similar times
-SELECT *
+SELECT  e_earthquakeIdNum, e_date, e_time, f_fireIdNum, f_counties, f_started
 FROM Earthquakes, Fires
 WHERE substr(e_date,6,9)  LIKE substr(f_started, 1,4)
     AND substr(substr(e_date, 3,3),1,2) = substr(substr(f_started, 5,6), 2,2)
@@ -1788,7 +1788,7 @@ WHERE substr(e_date,6,9)  LIKE substr(f_started, 1,4)
 SELECT DISTINCT f_counties, substr(f_started, 1,4) AS Year, COUNT(*) as Fire_Count
 FROM Fires
 GROUP BY f_counties, substr(f_started, 1,4)
-ORDER BY substr(f_started, 1,4)
+ORDER BY substr(f_started, 1,4);
 
 --Where were the fires in each county burned the most acres located
 SELECT f_counties, f_location, MAX(f_acresBurned) as Burned
@@ -1821,10 +1821,10 @@ From(SELECT substr(f_latitude, 1,2) as lat, substr(f_longitude, 1, 3) as long
     FROM Fires
     WHERE f_acresBurned > 500) as res1, Sources
 WHERE res1.lat LIKE substr(S_latitude, 1, 2) AND
-    res1.long LIKE substr(S_longitude, 1,3)
+    res1.long LIKE substr(S_longitude, 1, 3)
 
 --How many earthquakes have happened on the same day and at the same place as a Tsunami and that had to travel for more than 10 minutes
-SELECT DISTINCT *
+SELECT DISTINCT e_date 
 FROM(
     SELECT *
     FROM Earthquakes, Sources
@@ -1837,7 +1837,6 @@ WHERE substr(res1.S_latitude, 1, 2) LIKE substr(res1.e_latitude, 1, 2) AND
 GROUP BY W_sourceId
 HAVING W_travelTimeHours > 10;
 
-<<<<<<< HEAD
 --Was there ever times where there could've been a fire tornado at any recorded site
 SELECT *
 FROM Fires, Hurricanes
@@ -1848,11 +1847,9 @@ WHERE substr(H_latitude,1,3) LIKE substr(f_latitude, 1,3) AND
     substr(substr(H_dates,6,6),2,3) LIKE substr(substr(substr(f_started,6,7), 3, 4), 2,2)
 
 --
-=======
 UPDATE Sources
 SET S_year = REPLACE(S_year, 2011, 2018);
 
->>>>>>> eca508d8e054b03f0492b6ca594ad771db5327a4
 
 UPDATE Sources
 SET S_year = REPLACE(S_year, 2011, 2018);
