@@ -1774,12 +1774,12 @@ WHERE W_State = "GREECE" and W_year = 1996;
 -- <<<<<<< HEAD
 
 --What earthquakes have occurrded in sites that are close to site where fires have been declared
-SELECT *
+SELECT e_earthquakeIdNum, e_date, f_fireIdNum, f_counties
 FROM Earthquakes, Fires
 WHERE substr(e_longitude, 1, 4) LIKE substr(f_longitude, 1, 4)
 
 --How many earthquakes and fires have been declared at similar times
-SELECT *
+SELECT  e_earthquakeIdNum, e_date, e_time, f_fireIdNum, f_counties, f_started
 FROM Earthquakes, Fires
 WHERE substr(e_date,6,9)  LIKE substr(f_started, 1,4)
     AND substr(substr(e_date, 3,3),1,2) = substr(substr(f_started, 5,6), 2,2)
@@ -1821,10 +1821,10 @@ From(SELECT substr(f_latitude, 1,2) as lat, substr(f_longitude, 1, 3) as long
     FROM Fires
     WHERE f_acresBurned > 500) as res1, Sources
 WHERE res1.lat LIKE substr(S_latitude, 1, 2) AND
-    res1.long LIKE substr(S_longitude, 1,3)
+    res1.long LIKE substr(S_longitude, 1, 3)
 
 --How many earthquakes have happened on the same day and at the same place as a Tsunami and that had to travel for more than 10 minutes
-SELECT DISTINCT *
+SELECT DISTINCT e_date 
 FROM(
     SELECT *
     FROM Earthquakes, Sources
