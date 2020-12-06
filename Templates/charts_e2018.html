@@ -1,0 +1,67 @@
+{% extends "c_base.html" %}
+{% block title%}  {% endblock %}
+{% block navbar%}
+
+<link rel="stylesheet" href= "static/css/styles_c.css">
+<h1 style="background-color:green;">Earthquakes</h1>
+<h2 >Choose the following years: </h2>
+<a href="/charts_e2016" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2016</a>
+<br>
+<a href="/charts_e2017" class="btn btn-success btn-lg active" role="button" aria-pressed="true">2017</a>
+<br>
+<a href="/charts_e2018" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">2018</a>
+<br>
+<a href="/charts" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Return</a>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    {% endblock %}
+
+    {% block body %}
+    <div class="ct-chart ct-perfect-fourth"></div>
+    <script>
+      var data = [];
+      var chart;
+      const Http = new XMLHttpRequest();
+        const url='http://127.0.0.1:5000/charts_e2018';
+        Http.open("POST", url);
+        Http.send();
+        // data = Http.responseText
+        Http.onreadystatechange = (e) => {
+          var res = JSON.parse(Http.responseText)
+          console.log(res)
+          if(data.length == 0){
+          for (var i = 0; i < 9; i++){
+            data.push(res[i])
+          }
+        }
+          console.log(data)
+          console.log(1,2,3,4,5,6,7,8,9)
+        };
+        // console.log(data)
+
+        chart = {
+            // A labels array that can contain any sort of values
+            
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','June','July','Aug','Sep'],
+            // Our series array that contains series objects or in this case series data arrays
+
+            series: [data]
+            
+          };
+          
+          // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+          // as you saw in the previous example
+          var options = {
+            width: 800,
+            height: 600
+          };
+          
+          // Create a new line chart object where as first parameter we pass in a selector
+          // that is resolving to our chart container element. The Second parameter
+          // is the actual data object. As a third parameter we pass in our custom options.
+          new Chartist.Line('.ct-chart', chart, options);
+        </script>
+
+    {% endblock %}
