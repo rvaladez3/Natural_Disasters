@@ -1074,6 +1074,133 @@ def chartsf2018():
             return jsonify(final)  
         return render_template("charts_f2018.html", data = final)
 
+@app.route("/charts_s", methods=["GET"])
+def chartss():
+    return render_template("charts_s.html")
+
+@app.route("/charts_s2016", methods=["GET", "POST"])
+def chartss2018():
+        
+        
+        chart = []
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-01-01' AND '2018-01-30';
+                """
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        chart = []
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-02-01' AND '2018-02-30';
+                """
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        chart = []
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-03-01' AND '2018-03-30';
+                """
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        chart = []
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-04-01' AND '2018-04-30';
+                """
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        print(chart)
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-05-01' AND '2018-05-30'
+                """
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-06-01' AND '2018-06-30'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-07-01' AND '2018-07-30'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-08-01' AND '2018-08-30'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-09-01' AND '2018-09-29'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-10-01' AND '2018-10-30'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-11-01' AND '2018-11-30'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = """SELECT COUNT(*) FROM Fires
+                WHERE f_started BETWEEN '2018-12-01' AND '2018-12-30'"""
+        result = cur.execute(sql)
+        result = result.fetchall()
+        chart.append(result[0])
+        
+        L1 = list(chart)
+        
+        final = []
+        
+        
+        for s in L1:
+            final.append(s[0])
+            
+        print(final)
+        if request.method == "POST":
+            return jsonify(final)  
+        return render_template("charts_f2018.html", data = final)
+
 
 @app.route("/usr")
 def usr():
