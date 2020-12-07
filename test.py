@@ -36,8 +36,6 @@ def home():
                      """
             result = cur.execute(sql)
             result = result.fetchall()
-            for res in result:
-                print(res)
             return render_template("index.html", result=result)
         if Usr == "Two":
             connection = sqlite3.connect(data)
