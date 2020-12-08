@@ -3,24 +3,20 @@
 {% block navbar%}
 
 <link rel="stylesheet" href= "static/css/styles_c.css">
-<h1 style="background-color:green;">Earthquakes</h1>
-<h2>Choose the following years: </h2>
-
-<a href="/charts_e2016" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2016</a>
+<h1 style="background-color:green;">Wave Sources
+</h1>
+<h2 >Choose the following years: </h2>
+<a href="/charts_s2016" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2016</a>
 <br>
-<a href="/charts_e2017" class="btn btn-success btn-lg active" role="button" aria-pressed="true">2017</a>
+<a href="/charts_s2017" class="btn btn-success btn-lg active" role="button" aria-pressed="true">2017</a>
 <br>
-<a href="/charts_e2018" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">2018</a>
+<a href="/charts_s2018" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">2018</a>
 <br>
 <a href="/charts" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Return</a>
-
-<br>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-
-
     {% endblock %}
 
     {% block body %}
@@ -29,7 +25,7 @@
       var data = [];
       var chart;
       const Http = new XMLHttpRequest();
-        const url='http://127.0.0.1:5000/charts_e2016';
+        const url='http://127.0.0.1:5000/charts_s2016';
         Http.open("POST", url);
         Http.send();
         // data = Http.responseText
@@ -49,7 +45,7 @@
         chart = {
             // A labels array that can contain any sort of values
             
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','June','July','Aug','Sep'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'June','July','Aug','Sep', "Oct", "Nov", 'Dec'],
             // Our series array that contains series objects or in this case series data arrays
 
             series: [data]
