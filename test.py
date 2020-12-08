@@ -219,11 +219,9 @@ def earthquakesdelete():
         print(row)
 
         try:
-            sql = """ DELETE FROM Fires
-                    WHERE e_earthquakeIdNum = ? AND
-                        substr(e_date, 6,4) = ? AND
-                        substr(e_date, 1,1) = ? 
-                        AND substr(e_date, 3,2) = ?"""
+            sql = """ DELETE FROM Earthquakes
+                    WHERE e_earthquakeIdNum = ? AND substr(e_date, 6,4) = ? 
+                    AND substr(e_date, 1,1) = ? AND substr(e_date, 3,2) = ?  """
 
             cursor = connection.cursor()
             cursor.execute(sql, row)
@@ -234,7 +232,7 @@ def earthquakesdelete():
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
-            sql = "SELECT * from Fires Where f_archiveYear BETWEEN 2016 AND 2018"
+            sql = "SELECT * from Earthquakes"
             result = cur.execute(sql)
             result = result.fetchall()
             return render_template("earthquake_Delete.html", result=result)
@@ -242,14 +240,14 @@ def earthquakesdelete():
     else:
         connection = sqlite3.connect(data)
         cur = connection.cursor()
-        sql = "SELECT * from Fires Where f_archiveYear BETWEEN 2016 AND 2018"
+        sql = "SELECT * from Earthquakes"
         result = cur.execute(sql)
         result = result.fetchall()
         return render_template("earthquake_Delete.html", result=result)
 
         connection = sqlite3.connect(data)
         cur = connection.cursor()
-        sql = "SELECT * from Fires Where f_archiveYear BETWEEN 2016 AND 2018"
+        sql = "SELECT * from Earthquakes"
         result = cur.execute(sql)
         result = result.fetchall()
         return render_template("earthquake_Delete.html", result=result)
