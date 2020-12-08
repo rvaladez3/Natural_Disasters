@@ -264,6 +264,56 @@ def hurricanes():
         result = result.fetchall()
         return render_template("hurricanes.html", data=result)
 
+@app.route("/hurricanes_Delete", methods=["GET"])
+def hurricanesdelete():
+    #CP012016 20160822
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ DELETE FROM Hurricanes
+                    WHERE H_Key = ? AND
+                        substr(H_dates, 1 , 4) = ? AND
+                        substr(H_dates, 5 , 2) = ? 
+                        AND substr(H_dates, 7 , 2) = ?
+                       """
+
+            cursor = connection.cursor()
+            cursor.execute(sql, row)
+            connection.commit()
+            print(sql)
+            return render_template("hurricanes_Delete.html", result=result)
+        
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * from Hurricanes"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("hurricanes_Delete.html", result=result)
+
+    else:
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * from Hurricanes"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("hurricanes_Delete.html", result=result)
+
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * from Hurricanes"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("hurricanes_Delete.html", result=result)
+
+
 
 @app.route("/wildfires", methods=["GET"])
 def wildfires():
@@ -438,6 +488,55 @@ def wsources():
         result = result.fetchall()
         return render_template("wsources.html", result=result)
 
+@app.route("/wsources_Delete", methods=["GET"])
+def wsourcesdelete():
+    #3382 2017 2 25
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ DELETE FROM Sources
+                    WHERE S_ID = ? AND
+                        S_year = ? AND
+                        S_Month = ? 
+                        AND S_Day = ?"""
+
+            cursor = connection.cursor()
+            cursor.execute(sql, row)
+            connection.commit()
+            print(sql)
+            return render_template("wsources_Delete.html", result=result)
+        
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * FROM Sources"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("wsources_Delete.html", result=result)
+
+    else:
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * FROM Sources"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("wsources_Delete.html", result=result)
+
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * FROM Sources"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("wsources_Delete.html", result=result)
+
+
 
 @app.route("/winfo", methods=["GET", "POST"])
 def winfo():
@@ -519,6 +618,56 @@ def winfo():
         result = result.fetchall()
         return render_template("winfo.html", result=result)
 
+@app.route("/winfo_Delete", methods=["GET"])
+def winfodelete():
+    #3382 2017 2 25
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ DELETE FROM Waves
+                    WHERE W_waveId = ? AND
+                        W_year = ? AND
+                        W_month = ? 
+                        AND W_day = ?"""
+
+            cursor = connection.cursor()
+            cursor.execute(sql, row)
+            connection.commit()
+            print(sql)
+            return render_template("winfo_Delete.html", result=result)
+        
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * FROM Waves"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("winfo_Delete.html", result=result)
+
+    else:
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * FROM Waves"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("winfo_Delete.html", result=result)
+
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql =         sql = "SELECT * FROM Waves"
+
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("winfo_Delete.html", result=result)
+
+
 
 @app.route("/WD", methods=["GET", "POST"])
 def WD():
@@ -574,6 +723,55 @@ def WD():
         result = cur.execute(sql)
         result = result.fetchall()
         return render_template("WD.html", result=result)
+
+
+@app.route("/WD_Delete", methods=["GET"])
+def wddelete():
+    #3382 2017 2 25
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ DELETE FROM WorldDisaster
+                    WHERE wd_disasterNumber = ? AND substr(wd_incidentbeginDate,1,4) = ? 
+                    AND substr(wd_incidentbeginDate,6,2) = ? AND substr(wd_incidentbeginDate,9,2) = ?  """
+
+            cursor = connection.cursor()
+            cursor.execute(sql, row)
+            connection.commit()
+            print(sql)
+            return render_template("WD_Delete.html", result=result)
+        
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * FROM Waves"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("WD_Delete.html", result=result)
+
+    else:
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * FROM Waves"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("WD_Delete.html", result=result)
+
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql =         sql = "SELECT * FROM Waves"
+
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("WD_Delete.html", result=result)
+
 
 
 @app.route("/charts", methods=["GET"])
