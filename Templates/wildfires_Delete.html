@@ -1,0 +1,101 @@
+{% extends "d_base.html" %}
+{% block title%}  {% endblock %}
+{% block navbar%}
+
+<link rel="stylesheet" href= "static/css/disaster_e.css">
+  <a href="/earthquakes" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Earthquakes</a>
+  <a href="/hurricanes" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Hurricanes</a>
+  <a href="/wildfires" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Wildfires</a>
+  <a href="/wsources" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Waves Sources</a>
+  <a href="/winfo" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Waves info</a>
+  <a href="/WD" class="btn btn-light btn-lg active" role="button" aria-pressed="true">World Disasters</a>
+  
+<h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
+<br>
+<img src="static/images/earthquake.jpg" width = "900" height = "400" alt = "ND" class = "center">
+<br>
+<div class="alert alert-danger" role="alert">
+  <br>
+  Beware, You are about to delete information
+</div>
+
+{% endblock %}
+
+
+
+{% block body %}
+  <div>
+    <form> 
+      <label>Id</label>
+      <br/>
+      <input style="display:inline-block;" type = "text" name = "Id"/>
+      <br/>
+      <label>Year</label>
+      <br/>
+      <input style="display:inline-block;" type = "text" name = "Year"/>
+      <br/> 
+      <label>Month</label>
+      <br/>
+      <input type = "text" name = 'Month'/>
+      <br/>
+      <label>Day</label>
+      <br/>
+      <input type = "text" name = "Day"/>
+      <br/>
+      <button type = 'submit'>Delete</button>
+    </form>
+          <table  class="table table-dark">
+              <thead>
+                  <tr>
+                      <th scope="col">f_fireIdNum</td>
+                      <td scope="col">f_acresBurned</td>
+                      <td scope="col">f_active</td>
+                      <td scope="col">f_adminUnit</td>
+                      <td scope="col">f_archiveYear</td>
+                      <td scope="col">f_calfireIncident</td>
+                      <td scope="col">f_counties</td>
+                      <td scope="col">f_countyIds</td>
+                      <td scope="col">f_crewsInvolved</td>
+                      <td scope="col">f_extinguished</td>
+                      <td scope="col">f_fatalities</td>
+                      <td scope="col">f_injuries</td>
+                      <th scope="col">f_latitude</td>
+                      <td scope="col">f_longitude</td>
+                      <td scope="col">f_majorIncident</td>
+                      <td scope="col">f_location</td>
+                      <td scope="col">f_started</td>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for s in data%}
+                  <tr>
+                    
+                    <td>{{s[0]}}</td>
+                    <td>{{s[1]}}</td>
+                    <td>{{s[2]}}</td>
+                    <td>{{s[3]}}</td>
+                    <td>{{s[4]}}</td>
+                    <td>{{s[5]}}</td>
+                    <td>{{s[6]}}</td>
+                    <td>{{s[7]}}</td>
+                    <td>{{s[8]}}</td>
+                    <td>{{s[9]}}</td>
+                    <td>{{s[10]}}</td>
+                    <td>{{s[11]}}</td>
+                    <td>{{s[12]}}</td>
+                    <td>{{s[13]}}</td>
+                    <td>{{s[14]}}</td>
+                    <td>{{s[15]}}</td>
+                    <td>{{s[16]}}</td>
+                  </tr>
+                {% endfor%}
+                   
+              </tbody>
+          </table>
+      </div>
+{% endblock %}
+
+
+
+
+
