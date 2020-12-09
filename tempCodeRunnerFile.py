@@ -1,1 +1,1 @@
-)
+AND substr(wd_incidentbeginDate,9,2) = ?  """
