@@ -11,12 +11,75 @@
 
 <img src="static/images/earthquake.jpg" width = "900" height = "400" alt = "ND" class = "center">
 <br>
-<a href="/earthquakes_Update" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Update</a>
+<a href="/earthquakes_Update" class="btn btn-info  btn-lg active" role="button" aria-pressed="true">Update</a>
 <a href="/earthquakes_Delete" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
 {% endblock %}
 
 {% block body %}
   <div>
+    <form method = "GET"> 
+        <label>Id</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Id"/>
+        <br/>
+        <label>Year</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Year"/>
+        <br/> 
+        <label>Month</label>
+        <br/>
+        <input type = "text" name = 'Month'/>
+        <br/>
+        <label>Day</label>
+        <br/>
+        <input type = "text" name = "Day"/>
+        <br/>
+        <label>Time</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Time"/>
+        <br/>
+        <label>Latitude</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Latitude"/>
+        <br/> 
+        <label>Longitude</label>
+        <br/>
+        <input type = "text" name = 'Longitude'/>
+        <br/>
+        <label>Type</label>
+        <br/>
+        <input type = "text" name = "Type"/>
+        <br/>
+        <label>Depth</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Depth"/>
+        <br/>
+        <label>Magnitude</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Magnitude"/>
+        <br/> 
+        <label>Magnitude Type</label>
+        <br/>
+        <input type = "text" name = 'Magnitude Type'/>
+        <br/>
+        <label>Source</label>
+        <br/>
+        <input type = "text" name = "Source"/>
+        <br/>
+        <label>Location Source</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Location Source"/>
+        <br/> 
+        <label>Magnitude Source</label>
+        <br/>
+        <input type = "text" name = 'Magnitude Source'/>
+        <br/>
+        <label>Status</label>
+        <br/>
+        <input type = "text" name = "Status"/>
+        <br/>
+        <button type = 'submit'>Update</button>
+      </form>
           <table  class="table table-dark">
               <thead>
                   <tr>

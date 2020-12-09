@@ -207,6 +207,7 @@ def earthquake():
         result = result.fetchall()
         return render_template("earthquake.html", data=result)
 
+
 @app.route("/earthquakes_Delete", methods=["GET"])
 def earthquakesdelete():
     if request.method == "GET":
@@ -228,7 +229,7 @@ def earthquakesdelete():
             connection.commit()
             print(sql)
             return render_template("earthquake_Delete.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -245,13 +246,67 @@ def earthquakesdelete():
         result = result.fetchall()
         return render_template("earthquake_Delete.html", result=result)
 
+
+@app.route("/earthquakes_Update", methods=["GET"])
+def earthquakesupdate():
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Time"))
+        row.append(request.args.get("Latitude"))
+        row.append(request.args.get("Longitude"))
+        row.append(request.args.get("Type"))
+        row.append(request.args.get("Depth"))
+        row.append(request.args.get("Magnitude"))
+        row.append(request.args.get("Magnitude Type"))
+        row.append(request.args.get("Source"))
+        row.append(request.args.get("Location"))
+        row.append(request.args.get("Magnitude Source"))
+        row.append(request.args.get("Status"))
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ UPDATE Earthquakes
+                    SET e_time = ?,
+                    e_latitude = ?,
+                    e_longitude = ?,
+                    e_type = ?,
+                    e_depth = ?,
+                    e_Magnitude = ?,
+                    e_MagnitudeType = ?,
+                    e_source = ?,
+                    e_locationSource = ?,
+                    e_magnitudeSource = ?,
+                    e_status = ?
+                    WHERE e_earthquakeIdNum = ? AND substr(e_date, 6,4) = ? 
+                    AND substr(e_date, 1,1) = ? AND substr(e_date, 3,2) = ?  """
+
+            cursor = connection.cursor()
+            result = cursor.execute(sql, row)
+            connection.commit()
+            result = result.fetchall()
+
+            return render_template("earthquake_Update.html", result=result)
+
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * from Earthquakes"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("earthquake_Update.html", result=result)
+
+    else:
         connection = sqlite3.connect(data)
         cur = connection.cursor()
         sql = "SELECT * from Earthquakes"
         result = cur.execute(sql)
         result = result.fetchall()
-        return render_template("earthquake_Delete.html", result=result)
-
+        return render_template("earthquake_Update.html", result=result)
 
 
 @app.route("/hurricanes", methods=["GET"])
@@ -264,9 +319,10 @@ def hurricanes():
         result = result.fetchall()
         return render_template("hurricanes.html", data=result)
 
+
 @app.route("/hurricanes_Delete", methods=["GET"])
 def hurricanesdelete():
-    #CP012016 20160822
+    # CP012016 20160822
     if request.method == "GET":
         connection = sqlite3.connect(data)
         row = []
@@ -289,7 +345,7 @@ def hurricanesdelete():
             connection.commit()
             print(sql)
             return render_template("hurricanes_Delete.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -314,6 +370,97 @@ def hurricanesdelete():
         return render_template("hurricanes_Delete.html", result=result)
 
 
+@app.route("/hurricanes_Update", methods=["GET"])
+def hurricanesupdate():
+    # CP012016 20160822
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Alias"))
+        row.append(request.args.get("Name"))
+        row.append(request.args.get("Time"))
+
+        row.append(request.args.get("Event"))
+        row.append(request.args.get("Status"))
+        row.append(request.args.get("Latitude"))
+        row.append(request.args.get("Longitude"))
+        row.append(request.args.get("Max Wind"))
+        row.append(request.args.get("Min Pressure"))
+        row.append(request.args.get("Low NE"))
+        row.append(request.args.get("Low SE"))
+        row.append(request.args.get("Low SW"))
+        row.append(request.args.get("Moderate NE"))
+        row.append(request.args.get("Moderate SE"))
+        row.append(request.args.get("Moderate SW"))
+        row.append(request.args.get("Moderate NW"))
+        row.append(request.args.get("High NE"))
+        row.append(request.args.get("High SE"))
+        row.append(request.args.get("High SW"))
+        row.append(request.args.get("High NW"))
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ UPDATE Hurricanes
+                    SET H_Id = ?,
+                    H_Name = ?,
+                    H_dates = ?,
+                    H_time = ?,
+                    H_event = ?,
+                    H_status = ?,
+                    H_latitude = ?,
+                    H_longitude = ?,
+                    H_maximumWind = ?,
+                    H_minimumPressure = ?,
+                    H_LowWindNE = ?,
+                    H_LowWindSE = ?,
+                    H_LowWindSW = ?,
+                    H_ModerateWindNE = ?,
+                    H_ModerateWindSE = ?,
+                    H_ModerateWindSW = ?,
+                    H_ModerateWindNW = ?,
+                    H_HighWindNE = ?,
+                    H_HighWindSE = ?,
+                    H_HighWindSW = ?,
+                    H_HighWindNW = ?,
+                    WHERE H_Key = ? AND
+                        substr(H_dates, 1 , 4) = ? AND
+                        substr(H_dates, 5 , 2) = ? 
+                        AND substr(H_dates, 7 , 2) = ?
+                       """
+
+            cursor = connection.cursor()
+            cursor.execute(sql, row)
+            connection.commit()
+            print(sql)
+            return render_template("hurricanes_Update.html", result=result)
+
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * from Hurricanes"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("hurricanes_Update.html", result=result)
+
+    else:
+        connection = sqlite3.connect(data)
+        cur = connection.cursor()
+        sql = "SELECT * from Hurricanes"
+        result = cur.execute(sql)
+        result = result.fetchall()
+        return render_template("hurricanes_Update.html", result=result)
+
+    connection = sqlite3.connect(data)
+    cur = connection.cursor()
+    sql = "SELECT * from Hurricanes"
+    result = cur.execute(sql)
+    result = result.fetchall()
+    return render_template("hurricanes_Update.html", result=result)
+
 
 @app.route("/wildfires", methods=["GET"])
 def wildfires():
@@ -324,6 +471,7 @@ def wildfires():
         result = cursor.execute(q1)
         result = result.fetchall()
         return render_template("wildfires.html", data=result)
+
 
 @app.route("/wildfires_Delete", methods=["GET"])
 def wildfiresdelete():
@@ -348,7 +496,7 @@ def wildfiresdelete():
             connection.commit()
             print(sql)
             return render_template("wildfires_Delete.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -365,12 +513,79 @@ def wildfiresdelete():
         result = result.fetchall()
         return render_template("wildfires_Delete.html", result=result)
 
+
+@app.route("/wildfires_Update", methods=["GET"])
+def wildfiresupdate():
+    if request.method == "GET":
+        connection = sqlite3.connect(data)
+        row = []
+        row.append(request.args.get("Acres Burned"))
+        row.append(request.args.get("Active"))
+        row.append(request.args.get("Admin Unit"))
+        row.append(request.args.get("Incident"))
+        row.append(request.args.get("Counties"))
+        row.append(request.args.get("County Id"))
+        row.append(request.args.get("Crews Involved"))
+        row.append(request.args.get("Extinguished"))
+        row.append(request.args.get("Fatalities"))
+        row.append(request.args.get("Injuries"))
+        row.append(request.args.get("Latitude"))
+        row.append(request.args.get("Longitude"))
+        row.append(request.args.get("Major Incident"))
+        row.append(request.args.get("Id"))
+        row.append(request.args.get("Year"))
+        row.append(request.args.get("Month"))
+        row.append(request.args.get("Day"))
+        print(row)
+
+        try:
+            sql = """ DELETE Fires
+                    SET f_acresBurned = ?,
+                    f_active = ?,
+                    f_adminUnit = ?,
+                    f_calfireIncident = ?
+                    f_counties = ?,
+                    f_countyIds = ?,
+                    f_crewsInvolved	= ?,
+                    f_extinguished = ?,
+                    f_fatalities = ?,
+                    f_injuries = ?,
+                    f_latitude = ?,
+                    f_longitude = ?
+                    f_majorIncident = ?,
+                    f_location
+                    WHERE f_fireIdNum = ? AND
+                        f_archiveYear = ? AND
+                        substr(f_started, 6,2) = ? 
+                        AND substr(f_started, 9,2) = ?"""
+
+            cursor = connection.cursor()
+            cursor.execute(sql, row)
+            connection.commit()
+            print(sql)
+            return render_template("wildfires_Update.html")
+
+        except:
+            connection = sqlite3.connect(data)
+            cur = connection.cursor()
+            sql = "SELECT * from Fires Where f_archiveYear BETWEEN 2016 AND 2018"
+            result = cur.execute(sql)
+            result = result.fetchall()
+            return render_template("wildfires_Update.html", result=result)
+
+    else:
         connection = sqlite3.connect(data)
         cur = connection.cursor()
         sql = "SELECT * from Fires Where f_archiveYear BETWEEN 2016 AND 2018"
         result = cur.execute(sql)
         result = result.fetchall()
-        return render_template("wildfires_Delete.html", result=result)
+        return render_template("wildfires_Update.html", result=result)
+    connection = sqlite3.connect(data)
+    cur = connection.cursor()
+    sql = "SELECT * from Fires Where f_archiveYear BETWEEN 2016 AND 2018"
+    result = cur.execute(sql)
+    result = result.fetchall()
+    return render_template("wildfires_Update.html", result=result)
 
 
 @app.route("/wsources", methods=["GET"])
@@ -471,7 +686,7 @@ def wsources():
             cursor.execute(sql, row)
             connection.commit()
             return render_template("wsources.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -488,9 +703,10 @@ def wsources():
         result = result.fetchall()
         return render_template("wsources.html", result=result)
 
+
 @app.route("/wsources_Delete", methods=["GET"])
 def wsourcesdelete():
-    #3382 2017 2 25
+    # 3382 2017 2 25
     if request.method == "GET":
         connection = sqlite3.connect(data)
         row = []
@@ -512,7 +728,7 @@ def wsourcesdelete():
             connection.commit()
             print(sql)
             return render_template("wsources_Delete.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -535,7 +751,6 @@ def wsourcesdelete():
         result = cur.execute(sql)
         result = result.fetchall()
         return render_template("wsources_Delete.html", result=result)
-
 
 
 @app.route("/winfo", methods=["GET", "POST"])
@@ -609,7 +824,7 @@ def winfo():
         result = cursor.execute(sql2)
         result = result.fetchall()
 
-        return render_template("winfo.html", result = result)
+        return render_template("winfo.html", result=result)
     else:
         connection = sqlite3.connect(data)
         cur = connection.cursor()
@@ -618,9 +833,10 @@ def winfo():
         result = result.fetchall()
         return render_template("winfo.html", result=result)
 
+
 @app.route("/winfo_Delete", methods=["GET"])
 def winfodelete():
-    #3382 2017 2 25
+    # 3382 2017 2 25
     if request.method == "GET":
         connection = sqlite3.connect(data)
         row = []
@@ -642,7 +858,7 @@ def winfodelete():
             connection.commit()
             print(sql)
             return render_template("winfo_Delete.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -661,12 +877,11 @@ def winfodelete():
 
         connection = sqlite3.connect(data)
         cur = connection.cursor()
-        sql =         sql = "SELECT * FROM Waves"
+        sql = sql = "SELECT * FROM Waves"
 
         result = cur.execute(sql)
         result = result.fetchall()
         return render_template("winfo_Delete.html", result=result)
-
 
 
 @app.route("/WD", methods=["GET", "POST"])
@@ -727,7 +942,7 @@ def WD():
 
 @app.route("/WD_Delete", methods=["GET"])
 def wddelete():
-    #3382 2017 2 25
+    # 3382 2017 2 25
     if request.method == "GET":
         connection = sqlite3.connect(data)
         row = []
@@ -747,7 +962,7 @@ def wddelete():
             connection.commit()
             print(sql)
             return render_template("WD_Delete.html", result=result)
-        
+
         except:
             connection = sqlite3.connect(data)
             cur = connection.cursor()
@@ -766,12 +981,11 @@ def wddelete():
 
         connection = sqlite3.connect(data)
         cur = connection.cursor()
-        sql =         sql = "SELECT * FROM Waves"
+        sql = sql = "SELECT * FROM Waves"
 
         result = cur.execute(sql)
         result = result.fetchall()
         return render_template("WD_Delete.html", result=result)
-
 
 
 @app.route("/charts", methods=["GET"])
@@ -1719,6 +1933,7 @@ def chartss2016():
         return jsonify(final)
     return render_template("charts_s2016.html", data=final)
 
+
 @app.route("/charts_s2017", methods=["GET", "POST"])
 def chartss2017():
 
@@ -1963,7 +2178,6 @@ def chartss2018():
     return render_template("charts_s2018.html", data=final)
 
 
-
 @app.route("/usr")
 def usr():
     return render_template("user.html")
@@ -1987,4 +2201,4 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-# 22040 2016 1 29 
+# 22040 2016 1 29

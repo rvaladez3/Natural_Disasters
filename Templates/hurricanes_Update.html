@@ -11,7 +11,7 @@
   <a href="/WD" class="btn btn-light btn-lg active" role="button" aria-pressed="true">World Disasters</a>
   
 <h3>Flooding, Hurricanes, Tsunamis, Earthquakes and Wildfires</h3>
-<img src="static/images/wildfires.jpg" width = "900" height = "400" alt = "ND" class = "center">
+<img src="static/images/hurricanes.jpg" width = "900" height = "400" alt = "ND" class = "center">
 <br>
 <a href="/wildfires_Update" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Update</a>
 <a href="/wildfires_Delete" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
@@ -20,6 +20,105 @@
 
 {% block body %}
   <div>
+    <form method = "GET"> 
+        <label>Id</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Id"/>
+        <br/>
+        <label>Year</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Year"/>
+        <br/> 
+        <label>Month</label>
+        <br/>
+        <input type = "text" name = 'Month'/>
+        <br/>
+        <label>Day</label>
+        <br/>
+        <input type = "text" name = "Day"/>
+        <br/>
+        <label>Alias</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Alias"/>
+        <br/>
+        <label>Name</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Name"/>
+        <br/> 
+        <label>Time</label>
+        <br/>
+        <input type = "text" name = "Time"/>
+        <br/>
+        <label>Event</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Event"/>
+        <br/>
+        <label>Status</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Status"/>
+        <br/> 
+        <label>Latitude</label>
+        <br/>
+        <input type = "text" name = 'Latitude'/>
+        <br/>
+        <label>Longitude</label>
+        <br/>
+        <input type = "text" name = "Longitude"/>
+        <br/>
+        <label>Max Wind</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Max Wind"/>
+        <br/>
+        <label>Min Pressure</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Min Pressure"/>
+        <br/> 
+        <label>Low NE</label>
+        <br/>
+        <input type = "text" name = 'Low NE'/>
+        <br/>
+        <label>Low SE</label>
+        <br/>
+        <input type = "text" name = "Low SE"/>
+        <br/>
+        <label>Low SW</label>
+        <br/>
+        <input style="display:inline-block;" type = "text" name = "Low SW"/>
+        <br/> 
+        <label>Moderate NE</label>
+        <br/>
+        <input type = "text" name = 'Longitude'/>
+        <br/>
+        <label>Moderate SE</label>
+        <br/>
+        <input type = "text" name = "Moderate SE"/>
+        <br/>
+        <label>Moderate SW</label>
+        <br/>
+        <input type = "text" name = "Moderate SW"/>
+        <br/>
+        <label>Moderate NW</label>
+        <br/>
+        <input type = "text" name = "Moderate NW"/>
+        <br/>
+        <label>High NE</label>
+        <br/>
+        <input type = "text" name = "High NE"/>
+        <br/>
+        <label>High SE</label>
+        <br/>
+        <input type = "text" name = "High SE"/>
+        <br/>
+        <label>High SW</label>
+        <br/>
+        <input type = "text" name = "High SW"/>
+        <br/>
+        <label>High NW</label>
+        <br/>
+        <input type = "text" name = "High NW"/>
+        <br/>
+        <button type = 'submit'>Update</button>
+      </form>
           <table  class="table table-dark">
               <thead>
                   <tr>
