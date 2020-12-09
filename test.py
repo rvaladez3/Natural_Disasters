@@ -727,7 +727,6 @@ def WD():
 
 @app.route("/WD_Delete", methods=["GET"])
 def wddelete():
-    #3382 2017 2 25
     if request.method == "GET":
         connection = sqlite3.connect(data)
         row = []

@@ -61,23 +61,20 @@
               </tr>
               </thead>
               <tbody>
-                  {% for s in data%}
+                  {% for r in result%}
                   <tr>
-                    
-                    <td>{{s[0]}}</td>
-                    <td>{{s[1]}}</td>
-                    <td>{{s[2]}}</td>
-                    <td>{{s[3]}}</td>
-                    <td>{{s[4]}}</td>
-                    <td>{{s[5]}}</td>
-                    <td>{{s[6]}}</td>
-                    <td>{{s[7]}}</td>
-                    <td>{{s[8]}}</td>
-                    <td>{{s[9]}}</td>
-                    <td>{{s[10]}}</td>
-                    <td>{{s[11]}}</td>
-                    <td>{{s[12]}}</td>
-                  </tr>
+                    <td>{{r[0]}}</td>
+                    <th scope = 'row'>{{r[1]}}</th>
+                        <td>{{r[2]}}</td>
+                        <td>{{r[3]}}</td>
+                        <td>{{r[8]}}</td>
+                        <td>{{r[9]}}</td>
+                        <td>{{r[11]}}</td>
+                        <td>{{r[13]}}</td>
+                        <td>{{r[14]}}</td>
+                        <td>{{r[15]}}</td> 
+                        <td>{{r[16]}}</td>   
+                </tr>
                 {% endfor%}
                    
               </tbody>
